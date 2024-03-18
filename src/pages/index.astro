@@ -1,16 +1,18 @@
 ---
-
+import WidgetComponent from "../components/WidgetComponent.vue"
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Clima</title>
-	</head>
-	<body>
-		<h1 class="text-7xl">Consulta clima</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Clima</title>
+  </head>
+  <body>
+	<div style="background-image: url(/background.webp);" class="bg-cover min-h-screen min-w-screen">
+		<WidgetComponent client:load />
+	</div>
+  </body>
 </html>
