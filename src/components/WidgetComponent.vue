@@ -20,13 +20,13 @@ const blurLevel = computed(() => {
 })
 
 const animations = ref({
-    Thunderstorm: '/animated/thunder.svg',
-    Drizzle: '/animated/rainy-2.svg',
-    Rain: '/animated/rainy-7.svg',
-    Snow: '/animated/snowy-6.svg',
-    Clear: '/animated/day.svg',
-    Atmosphere: '/animated/weather.svg',
-    Clouds: '/animated/cloudy-day-1.svg',
+    Thunderstorm: '/clima/animated/thunder.svg',
+    Drizzle: '/clima/animated/rainy-2.svg',
+    Rain: '/clima/animated/rainy-7.svg',
+    Snow: '/clima/animated/snowy-6.svg',
+    Clear: '/clima/animated/day.svg',
+    Atmosphere: '/clima/animated/weather.svg',
+    Clouds: '/clima/animated/cloudy-day-1.svg',
 })
 
 const info = ref(null)
@@ -36,15 +36,13 @@ onMounted(() => {
         navigator.geolocation.getCurrentPosition((position) => {
             lat.value = position.coords.latitude
             lon.value = position.coords.longitude
-            const key = ""
+            const key = "e09dca86339db8efde3edff44588b821"
 
             const res = fetch(
                 `https://api.openweathermap.org/data/2.5/weather?lat=${lat.value}&lon=${lon.value}&appid=${key}&lang=es`
             )
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
-
                     info.value = {
                         country: data.sys.country,
                         temp: (data.main.temp - 273.15).toFixed(),
@@ -61,7 +59,7 @@ onMounted(() => {
                         main: {
                             humidity: data.main.humidity
                         },
-                        icon: animations.value[data.weather[0].main] ?? "/animated/cloudy-day-1.svg"
+                        icon: animations.value[data.weather[0].main] ?? "/base/animated/cloudy-day-1.svg"
                     }
                 })
                 .catch(error => {
